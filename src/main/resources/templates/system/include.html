@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 公用组件 -->
+<title>Common</title>
+
+</head>
+<body>
+
+	<!-- 头部信息 th:fragment：标签引入名，对应引用的<div th:replace="include::header"></div>-->
+	<div th:fragment="system-page-header" class="right-page-header">
+		<!-- 如果用户不等于空 -->
+		<ul th:if="${session.user}!=null">
+			<li><font>欢迎你，</font> <!-- 如果昵称不为空则显示昵称，否则显示用户名 --> <a
+				href="" th:if="${session.user.nickname!=null}" th:text=" ${session.user.nickname }"></a>
+				<a href="" th:else th:text=" ${session.user.username }"></a>
+			</li>
+			<li><a href="#">账户管理</a></li>
+			<!-- 用户跳转前面需加/ -->
+			<li><a href="/logout">注销</a></li>
+		</ul>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>用户注册</title>
+
+<!-- my.css：自定义css样式都放这里 -->
+<link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" >
+
+<!-- 必须先引用jQuery.js再去引用其他js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 ">
+				<div class="right-page-header">
+			<ul th:else>
+			<li><a href="/sign-in">已有账户去登陆</a></li>
+				<li><a>意见反馈</a></li>
+			</ul>
+		</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div align="center" class="container-authenticate">
+		<ul class="list-unstyled">
+			<li>
+				<h2 th:text="欢迎注册" class="line-hight-80"></h2>
+			</li>
+			<li>
+				<div>
+					<ul id="myTab" class="nav nav-tabs ">
+						<li class="active"><a href="#usernameRegister"
+							data-toggle="tab">用户名注册</a></li>
+						<li><a href="#phoneRegister" data-toggle="tab">手机号注册</a></li>
+						<li><a href="#emailRegister" data-toggle="tab">邮箱注册</a></li>
+					</ul>
+					<form action="/register" method="post"
+						onsubmit="return check()" autocomplete="off">
+						<div id="myTabContent" class="tab-content margin_top_30">
+							<div class="tab-pane fade in active" id="usernameRegister">
+								<div class="form-group has-feedback" id="usernameBox">
+									<input type="text" class="form-control  input-lg"
+										name="username" placeholder="用户名称"
+										onblur="isUserNameValid()"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"
+										id="usernameIocn"></span> <span id="usernameHint"
+										hidden="hidden" class="input_hint my_transition"></span>
+								</div>
+								<div class="form-group has-feedback" id="passwordBox">
+									<input type="password" class="form-control  input-lg"
+										name="password" placeholder="用户密码" onblur="isPasswordValid()">
+									<span class="glyphicon form-control-feedback"
+										aria-hidden="true" id="passwordIocn"></span> <span
+										id="passwordHint" hidden="hidden"
+										class="input_hint my_transition"></span>
+								</div>
+								<div class="form-group has-feedback" id="confirmpwdBox">
+									<input type="password" class="form-control  input-lg"
+										name="confirmpwd" placeholder="确认密码"
+										onblur="isConfirmpwdValid()"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"
+										id="confirmpwdIcon"></span> <span id="confirmpwdHint"
+										hidden="hidden" class="input_hint"></span>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="phoneRegister">
+								<div class="form-group has-feedback">
+									<input type="text" class="form-control  input-lg" name="phone"
+										placeholder="手机号"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="usernameHint" hidden="hidden">× 提示信息</span>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" class="form-control input-lg"
+										name="phoneValid" placeholder="验证码"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="passwordHint" hidden="hidden">× 提示信息</span>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="emailRegister">
+
+								<div class="form-group has-feedback">
+									<input type="text" class="form-control input-lg" name="email"
+										placeholder="邮箱"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="usernameHint" hidden="hidden">× 提示信息</span>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" class="form-control input-lg"
+										name="emailpwd" placeholder="用户密码"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="passwordHint" hidden="hidden">× 提示信息</span>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" class="form-control input-lg"
+										name="emailValid" placeholder="验证码"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="confirmpwdHint" hidden="hidden">× 提示信息</span>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-info   btn-block   btn-lg">注册</button>
+					</form>
+				</div>
+			</li>
+		</ul>
+	</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var windowHeight = $(window).height();
+
+		});
+
+		var xhr = false;
+		var username;
+		//判断用户名是否合法
+		function isUserNameValid() {
+			//获取用户名
+			username = $("input[name=username]").val();
+			console.log("获取username的值：" + username);
+			//a-zA-Z下划线0-9  3到18位  ^表示开始结尾
+			var regex = /^[a-zA-Z_0-9]{3,16}$/;//正则表达式
+			if (regex.test(username)) {
+				console.log("用户名合法");
+				//判断用户名是否合法
+				//使用ajax异步判断用户名是否重复
+				//1. 获取发送请求的XMLHttpRequest对象
+				if (window.XMLHttpRequest) {//非IE浏览器
+					xhr = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {//IE浏览器
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				if (xhr) {//判断是否获取到对象
+					console.log("XMLHttpRequest对象创建成功");
+					usernameRepeatValid();//调用用户名重复验证函数
+				} else {
+					console.log("XMLHttpRequest对象创建失败");
+				}
+			} else {
+				console.log("用户名不合法");
+				errorText($("#usernameHint"), $("#usernameBox"),
+						$("#usernameIocn"),
+						"<font color=\"red\">用户名由字母和数字组成长度3-16之间</font>");//包装的文本改变方法
+			}
+		}
+
+		function usernameRepeatValid() {
+			//2.定义url连接
+			var url = "/exists/username";
+			//3.打开到服务器的连接
+			xhr.open("post", url, true);//true异步请求，false同步请求
+			//post请求必须配置请求的内容类型
+			xhr.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded");
+			//4.绑定回调函数,响应回来之后会被调用的函数
+			xhr.onreadystatechange = callback;
+			//5.发送请求
+			console.log("发送请求参数：" + username);
+			xhr.send("username=" + username);
+		}
+
+		function callback() {
+			console.log("调用回调函数");
+			if (xhr.readyState == 4) {//4表示相应完成
+				console.log("xhr.status：" + xhr.status);
+				if (xhr.status == 200) {//200  ok  相应正常没有出现异常
+					var response = xhr.responseText;//writer.write() 获取返回的文本值
+					if (response == "1") {
+						successfulText($("#usernameHint"), $("#usernameBox"),
+								$("#usernameIocn"));//包装的文本改变方法
+						return true;
+					} else {
+						errorText($("#usernameHint"), $("#usernameBox"),
+								$("#usernameIocn"),
+								"<font color=\"red\">该用户名已被使用</font>");
+						return false;
+					}
+				}
+			}
+		}
+
+		function errorText(hint, box, icon, showTest) {
+			hint.html("");
+			hint.show();
+			hint.html(showTest);
+			box.addClass("has-error");
+			icon.addClass("glyphicon-remove");
+		}
+
+		function successfulText(hint, box, icon) {
+			hint.hide();
+			box.removeClass("has-error");
+			icon.removeClass("glyphicon-remove");
+			box.addClass("has-success");
+			icon.addClass("glyphicon-ok");
+		}
+
+		function isPasswordValid() {
+			var password = $("input[name=password]").val();
+			var confirmpwd = $("input[name=confirmpwd]").val();
+			if (confirmpwd.length != 0 || confirmpwd.trim() != "") {
+				isConfirmpwdValid();
+			}
+			console.log("获取password的值：" + password);
+			//a-zA-Z下划线0-9  3到18位  ^表示开始结尾
+			var regex = /^[a-zA-Z_0-9]{3,16}$/;//正则表达式
+			if (regex.test(password)) {
+				console.log("密码合法");
+				successfulText($("#passwordHint"), $("#passwordBox"),
+						$("#passwordIocn"));//包装的文本改变方法
+				return true;
+			} else {
+				errorText($("#passwordHint"), $("#passwordBox"),
+						$("#passwordIocn"),
+						"<font color=\"red\">密码由字母和数字组成长度3-16之间</font>");
+				return false;
+			}
+		}
+
+		function isConfirmpwdValid() {
+			var confirmpwd = $("input[name=confirmpwd]").val();
+			var password = $("input[name=password]").val();
+			console.log("获取confirmpwd的值：" + confirmpwd);
+			if (password == confirmpwd) {
+				successfulText($("#confirmpwdHint"), $("#confirmpwdBox"),
+						$("#confirmpwdIcon"));//包装的文本改变方法
+				return true;
+			} else {
+				errorText($("#confirmpwdHint"), $("#confirmpwdBox"),
+						$("#confirmpwdIcon"),
+						"<font color=\"red\">两次输入的密码不一致</font>");
+				return false;
+			}
+		}
+
+		function check() {
+			//如果全部返回值为true则提交
+			if (isConfirmpwdValid() && isPasswordValid() && callback()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

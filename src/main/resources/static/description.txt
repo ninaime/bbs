@@ -1,0 +1,3 @@
+static是放静态页面的地方
+
+这里我们直接在static放一个hello.html,然后直接输入http://localhost:8080/hello.html便能成功访问

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- 标题显示在浏览器上的标题 -->
+<title>查看用户信息</title>
+
+<!-- my.css：自定义css样式都放这里 -->
+<link href="/css/my.css" rel="stylesheet">
+
+<link href="/css/bootstrap.css" rel="stylesheet">
+<!-- 必须先引用jQuery.js再去引用其他js -->
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/vue.js"></script>
+<script src="/js/axios.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- 这里引入头部标签 -->
+				<div th:replace="system/include::system-page-header"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2">
+				<!-- 这里引入左侧菜单栏 -->
+			</div>
+			<div class="col-xs-9">
+				<!-- 这里引入主文件 -->
+				<div th:replace="system/user-show-main::user-show-main"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

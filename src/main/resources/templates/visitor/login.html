@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>用户登录-通行证-站酷</title>
+<link rel="icon" href="/icon/icon.png" type="image/x-icon" />
+
+<!-- my.css：自定义css样式都放这里 -->
+<link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" >
+
+<!-- 必须先引用jQuery.js再去引用其他js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<!-- 引用验证页眉 -->
+			<div class="col-xs-12 ">
+				<!-- 
+		  				1.th:replace :不要自己的主标签引用
+		  				2.第一个参数include为文件名
+		  				3.第二个参数为th:fragment="header"名
+	  				-->
+				<div class="right-page-header">
+			<ul th:else>
+				<li><a href="/sign-up">去注册</a></li>
+				<li><a>意见反馈</a></li>
+			</ul>
+		</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div align="center" class="container-authenticate"
+		th:fragment="login-main">
+		<ul class="list-unstyled">
+			<li>
+				<h2 th:text="欢迎登录" class="line-hight-80"></h2>
+			</li>
+			<li>
+				<div>
+					<ul id="myTab" class="nav nav-tabs ">
+						<li class="active"><a href="#userLogin"
+							data-toggle="tab">登录</a></li>
+						<li><a href="#verifyLogin" data-toggle="tab">手机登录</a></li>
+					</ul>
+					<form action="/login/login" method="post" autocomplete="off">
+						<div id="myTabContent" class="tab-content margin_top_30">
+							<div class="tab-pane fade in active" id="#userLogin">
+								<div class="form-group has-feedback" id="usernameBox">
+									<input type="text" class="form-control  input-lg"
+										name="username" placeholder="用户名称/邮箱/手机号"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"
+										id="usernameIocn"></span> <span id="usernameHint"
+										hidden="hidden" class="input_hint my_transition"></span>
+								</div>
+								<div class="form-group has-feedback" id="passwordBox">
+									<input type="password" class="form-control  input-lg"
+										name="password" placeholder="用户密码">
+									<span class="glyphicon form-control-feedback"
+										aria-hidden="true" id="passwordIocn"></span> <span
+										id="passwordHint" hidden="hidden"
+										class="input_hint my_transition"></span>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="#verifyLogin">
+								<div class="form-group has-feedback">
+									<input type="text" class="form-control  input-lg" name="phone"
+										placeholder="手机号"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="usernameHint" hidden="hidden">× 提示信息</span>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" class="form-control input-lg"
+										name="phoneValid" placeholder="验证码"> <span
+										class="glyphicon form-control-feedback" aria-hidden="true"></span>
+									<span id="passwordHint" hidden="hidden">× 提示信息</span>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-info   btn-block   btn-lg">登录</button>
+					</form>
+				</div>
+			</li>
+		</ul>
+	</div>	
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="twelve">
+		<font color="red" th:text="${message}"></font>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

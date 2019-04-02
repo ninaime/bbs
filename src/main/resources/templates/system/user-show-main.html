@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<!-- 
+		主要部分
+		container-authenticate：表示自适应布局
+		th:fragment="register-main：th:fragment表示被包含的名字，对应
+	-->
+	<div align="center" class="container-fluid"
+		th:fragment="user-show-main">
+		<form action="">
+			<!-- text-nowrap控制内容不换行 -->
+			<table class="table text-nowrap">
+				<thead>
+					<tr>
+						<th></th>
+						<th>昵称</th>
+						<th>登录名</th>
+						<th>手机号</th>
+						<th>邮箱</th>
+						<th>密码</th>
+						<th>状态</th>
+						<th>权限</th>
+						<th>是否在线</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="u,status:${userlist}">
+						<td><input type="checkbox" name="id" th:value="${u.id}"></td>
+						<td th:text="${u.nickname}"></td>
+						<td th:text="${u.username }"></td>
+						<td th:text="${u.phone }"></td>
+						<td th:text="${u.email }"></td>
+						<td th:text="${u.password }"></td>
+						<td th:text="${u.isDisable }"></td>
+						<td th:text="${u.role.roleName}"></td>
+						<td th:text="${u.isOnline}"></td>
+						<td><a href="${u.id}">修改</a> <a href="#">删除</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+
+<script type="text/javascript">
+	
+	//在这里调用ajax请求方法
+    created(){
+      this.convert();
+    },
+	methods: {
+		convert: function () {
+        axios.get("http://localhost:8080/sys/users").then(res => {
+        	console.log(res)
+        })
+        .catch(err => {
+			console.error(err); 
+		})
+      }
+    }
+    
+    
+/*     var vue = new vue ({
+        el:"#app",
+        data:"",
+        methods:{
+          list=function(){
+            axios.post("http://localhost:8080/sys/user/listSysUser")
+            .then(res => {
+              console.log(res)
+            })
+            .catch(err => {
+              console.error(err); 
+            })
+          }
+        }
+      }) */
+    
+</script>
+
+</body>
+</html>

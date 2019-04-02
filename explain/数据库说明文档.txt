@@ -1,0 +1,6 @@
+navicat外网数据库连接：
+1. 连接名：随意
+主机名或IP地址：cdb-iu7ogbez.gz.tencentcdb.com
+端口：10014
+用户名：root
+密码：ninaime_

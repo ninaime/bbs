@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- 标题显示在浏览器上的标题 -->
+<title>论坛首页</title>
+
+<!-- my.css：自定义css样式都放这里 -->
+<link href="/css/my.css" rel="stylesheet">
+
+<link href="/css/bootstrap.css" rel="stylesheet">
+<!-- 必须先引用jQuery.js再去引用其他js -->
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div>
+	<!-- 
+		1.th:replace :不要自己的主标签引用
+		2.第一个参数include为文件名
+		3.第二个参数为th:fragment="header"名
+	-->
+	
+	<!-- bootstrap布局框架 -->
+	<div class="container">
+		<div class="row">
+			<!-- 调用头部框架 -->
+			<div class="col-xs-1"></div>
+			<div th:replace="tourist/include::header" class="col-xs-10"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

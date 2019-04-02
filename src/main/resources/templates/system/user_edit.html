@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<title>显示所有用户信息</title>
+</head>
+<body>
+  <%@include file="../header.jsp" %>
+  <form action="UserServlet/updateUser">
+	<table class="table" >
+	  <tr>
+	  	<td align="right">用户名：</td>
+	  	<td><input type="text" value="${user.tuName}"  name="tuName" class="form-control"></td>
+	  </tr>
+	  <tr>
+	  	<td align="right">登录名：</td>
+	  	<td><input type="text" value="${user.username}"  name="username" class="form-control"></td>
+	  </tr>
+	  <tr>
+	  	<td align="right">密码：</td>
+	  	<td><input type="text" value="${user.password}"  name="password" class="form-control"></td>
+	  </tr>
+	  <tr>
+	  	<td align="right">创建时间：</td>
+	  	<td><input type="text" value="${user.createtime}"  name="createtime" class="form-control"></td>
+	  </tr>
+	  	  <tr align="right">
+	  	<td>最近登录时间：</td>
+	  	<td><input type="text" value="${user.onlinetime}"  name="onlinetime" class="form-control"></td>
+	  </tr>
+	  <tr>
+	  	<td align="right">角色信息：</td>
+	  	<td><input type="text" value="${user.roleId}"  name="roleId" class="form-control"></td>
+	  </tr>
+	  <tr>
+	  	<td align="right">是否在线：</td>
+	  	<td><input type="text" value="${user.tuLock}"  name="tuLock" class="form-control"></td>
+	  </tr>
+	  <tr>
+	  	<td align="right"><button>修改</button></td>
+	  	<td><button>返回</button></td>
+	  </tr>
+
+	</table>
+  </form>
+</body>
+</html>

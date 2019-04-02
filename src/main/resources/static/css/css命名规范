@@ -1,0 +1,192 @@
+ 三、CSS命名规范（规则）
+常用的CSS命名规则
+
+头：header
+内容：content/container
+尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体佈局宽度：wrapper
+左右中：left right center
+登录条：loginbar
+标志：logo
+广告：banner
+页面主体：main
+热点：hot
+新闻：news
+下载：download
+子导航：subnav
+菜单：menu
+子菜单：submenu
+搜索：search
+友情链接：friendlink
+页脚：footer
+版权：copyright
+滚动：scroll
+内容：content
+标签：tags
+文章列表：list
+提示信息：msg
+小技巧：tips
+栏目标题：title
+加入：joinus
+指南：guide
+服务：service
+注册：regsiter
+状态：status
+投票：vote
+合作伙伴：partner
+
+注释的写法:
+
+/* Header */
+内容区
+/* End Header */
+
+id的命名:
+
+1)页面结构
+
+容器: container
+页头：header
+内容：content/container
+页面主体：main
+页尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体佈局宽度：wrapper
+左右中：left right center
+
+(2)导航
+
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary
+
+(3)功能
+
+标志：logo
+广告：banner
+登陆：login
+登录条：loginbar
+注册：register
+搜索：search
+功能区：shop
+标题：title
+加入：joinus
+状态：status
+按钮：btn
+滚动：scroll
+标籤页：tab
+文章列表：list
+提示信息：msg
+当前的: current
+小技巧：tips
+图标: icon
+注释：note
+指南：guild
+服务：service
+热点：hot
+新闻：news
+下载：download
+投票：vote
+合作伙伴：partner
+友情链接：link
+版权：copyright
+
+四、注意事项::
+
+1.一律小写;
+2.尽量用英文;
+3.不加中槓和下划线;
+4.尽量不缩写，除非一看就明白的单词。
+
+五、CSS样式表文件命名
+
+主要的 master.css
+模块 module.css
+基本共用 base.css
+布局、版面 layout.css
+主题 themes.css
+专栏 columns.css
+文字 font.css
+表单 forms.css
+补丁 mend.css
+打印 print.css
+
+
+#wrapper 	页面外围控制整体布局宽度
+#container或#content 	容器,用于最外层
+#layout 	布局
+#head, #header 	页头部分
+#foot, #footer 	页脚部分
+#nav 	主导航
+#subnav 	二级导航
+#menu 	菜单
+#submenu 	子菜单
+#sideBar 	侧栏
+#sidebar_a, #sidebar_b 	左边栏或右边栏
+#main 	页面主体
+#tag 	标签
+#msg #message 	提示信息
+#tips 	小技巧
+#vote 	投票
+#friendlink 	友情连接
+#title 	标题
+#summary 	摘要
+#loginbar 	登录条
+#searchInput 	搜索输入框
+#hot 	热门热点
+#search 	搜索
+#search_output 	搜索输出和搜索结果相似
+#searchBar 	搜索条
+#search_results 	搜索结果
+#copyright 	版权信息
+#branding 	商标
+#logo 	网站LOGO标志
+#siteinfo 	网站信息
+#siteinfoLegal 	法律声明
+#siteinfoCredits 	信誉
+#joinus 	加入我们
+#partner 	合作伙伴
+#service 	服务
+#regsiter 	注册
+arr/arrow 	箭头
+#guild 	指南
+#sitemap 	网站地图
+#list 	列表
+#homepage 	首页
+#subpage 	二级页面子页面
+#tool, #toolbar 	工具条
+#drop 	下拉
+#dorpmenu 	下拉菜单
+#status 	状态
+#scroll 	滚动
+.tab 	标签页
+.left .right .center 	居左、中、右
+.news 	新闻
+.download 	下载
+.banner 	广告条(顶部广告条)
+电子贸易相关
+.products 	产品
+.products_prices 	产品价格
+.products_description 	产品描述
+.products_review 	产品评论
+.editor_review 	编辑评论
+.news_release 	最新产品
+.publisher 	生产商
+.screenshot 	缩略图
+.faqs 	常见问题
+.keyword 	关键词
+.blog 	博客
+.forum 	论坛
