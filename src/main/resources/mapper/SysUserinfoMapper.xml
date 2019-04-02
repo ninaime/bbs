@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.SysUserinfoMapper">
+<mapper namespace="com.mime.bbs.mapper.SysUserinfoMapper">
 		<!-- 
 			column：对应数据库列名
 			jdbcType：类型
 			property：对应实体类中属性
 		 -->
 
-	<resultMap id="BaseResultMap" type="com.model.SysUserinfo">
+	<resultMap id="BaseResultMap" type="com.mime.bbs.model.SysUserinfo">
 		<id column="ID" jdbcType="INTEGER" property="id" />
 			<result column="SEX" jdbcType="INTEGER" property="sex" />
 			<result column="BIRTHDAY" jdbcType="VARCHAR" property="birthday" />
@@ -17,7 +17,7 @@
 			<result column="SIGN" jdbcType="VARCHAR" property="sign" />
 			<result column="INEGRAL" jdbcType="INTEGER" property="inegral" />
 			<result column="IP" jdbcType="INTEGER" property="ip" />
-		<association property="user" javaType="com.model.SysUser">
+		<association property="user" javaType="com.mime.bbs.model.SysUser">
 			<id column="ID" jdbcType="INTEGER" property="id" />
 			<result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
 			<result column="USERNAME" jdbcType="VARCHAR" property="username" />

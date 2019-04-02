@@ -1,4 +1,4 @@
-package com.mime.bbs.visitor.controller;
+package com.mime.bbs.controller;
 
 import javax.annotation.Resource;
 
@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mime.bbs.exception.CustomException;
 import com.mime.bbs.model.SysUser;
+import com.mime.bbs.service.SysUserAuthenService;
 import com.mime.bbs.shiro.ShiroUtils;
-import com.mime.bbs.visitor.service.SysUserAuthenService;
 
 @Controller
 public class SysUserAuthenController {

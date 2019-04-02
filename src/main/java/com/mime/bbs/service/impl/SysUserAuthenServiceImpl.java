@@ -1,11 +1,11 @@
-package com.mime.bbs.visitor.service.impl;
+package com.mime.bbs.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mime.bbs.mapper.SysUserMapper;
 import com.mime.bbs.model.SysUser;
-import com.mime.bbs.visitor.service.SysUserAuthenService;
+import com.mime.bbs.service.SysUserAuthenService;
 
 @Service("sysUserAuthenService")
 public class SysUserAuthenServiceImpl implements SysUserAuthenService{

@@ -16,7 +16,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
 import com.mime.bbs.model.SysUser;
-import com.mime.bbs.visitor.service.SysUserAuthenService;
+import com.mime.bbs.service.SysUserAuthenService;
 
 
 /**

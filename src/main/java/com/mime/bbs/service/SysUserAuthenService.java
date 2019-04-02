@@ -1,4 +1,4 @@
-package com.mime.bbs.visitor.service;
+package com.mime.bbs.service;
 
 import com.mime.bbs.model.SysUser;
 

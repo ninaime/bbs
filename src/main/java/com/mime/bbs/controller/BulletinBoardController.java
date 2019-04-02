@@ -1,4 +1,4 @@
-package com.mime.bbs.visitor.controller;
+package com.mime.bbs.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

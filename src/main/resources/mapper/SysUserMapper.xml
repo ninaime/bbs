@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.SysUserMapper">
+<mapper namespace="com.mime.bbs.mapper.SysUserMapper">
 		<!-- 
 			column：对应数据库列名
 			jdbcType：类型
 			property：对应实体类中属性
 		 -->
-	<resultMap id="BaseResultMap" type="com.model.SysUser">
+	<resultMap id="BaseResultMap" type="com.mime.bbs.model.SysUser">
 		<id column="ID" jdbcType="INTEGER" property="id" />
 		<result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
 		<result column="USERNAME" jdbcType="VARCHAR" property="username" />
@@ -18,7 +18,7 @@
 		<result column="IS_ONLINE" jdbcType="INTEGER" property="isOnline" />
 		<result column="GMT_CREATE" jdbcType="DATE" property="gmtCreate" />
 		<result column="GMT_MODIFIED" jdbcType="DATE" property="gmtModified" />
-		<association property="role" javaType="com.model.SysRole">
+		<association property="role" javaType="com.mime.bbs.model.SysRole">
 			<id column="ROLE_ID" jdbcType="INTEGER" property="id" />
 			<result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
 			<result column="PERMISSION" jdbcType="VARCHAR" property="permission" />
@@ -83,7 +83,7 @@
 		delete from SYS_USER
 		where ID = #{id,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="com.model.SysUser">
+	<insert id="insert" parameterType="com.mime.bbs.model.SysUser">
 		insert into SYS_USER (ID,
 		NICKNAME, USERNAME,
 		PASSWORD, PHONE, EMAIL,
@@ -98,7 +98,7 @@
 		#{isonline,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective"
-		parameterType="com.model.SysUser">
+		parameterType="com.mime.bbs.model.SysUser">
 		insert into SYS_USER
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -166,7 +166,7 @@
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective"
-		parameterType="com.model.SysUser">
+		parameterType="com.mime.bbs.model.SysUser">
 		update SYS_USER
 		<set>
 			<if test="nickname != null">
@@ -200,7 +200,7 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey"
-		parameterType="com.model.SysUser">
+		parameterType="com.mime.bbs.model.SysUser">
 		update SYS_USER
 		set NICKNAME =
 		#{nickname,jdbcType=VARCHAR},
