@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.mime.bbs.model.Plate;
+import com.mime.bbs.model.BbsPlate;
 
 @Mapper
-public interface PlateMapper {
-	List<Plate> findPlate();
+public interface BbsPlateMapper {
+	List<BbsPlate> findPlate();
 }

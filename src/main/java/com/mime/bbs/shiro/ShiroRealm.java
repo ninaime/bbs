@@ -16,8 +16,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
 import com.mime.bbs.model.SysUser;
-import com.mime.bbs.service.SysUserAuthenService;
-
+import com.mime.bbs.service.UserAuthenService;
 
 /**
  * 实现AuthorizingRealm接口用户用户认证
@@ -25,9 +24,9 @@ import com.mime.bbs.service.SysUserAuthenService;
  */
 public class ShiroRealm extends AuthorizingRealm{
 	
-	// 实例化SysUserAuthenService
-	@Resource(name = "sysUserAuthenService") 
-	private SysUserAuthenService sysUserAuthenService;
+	// 实例化UserAuthenService
+	@Resource(name = "userAuthenService") 
+	private UserAuthenService userAuthenService;
 
 
 	/**
@@ -40,7 +39,7 @@ public class ShiroRealm extends AuthorizingRealm{
 		System.out.println("ShiroRealm.doGetAuthenticationInfo()  执行认证逻辑");
 		
 		// 编写shiro判断逻辑，判断用户名和密码
-		SysUser sysUser = sysUserAuthenService.findSysUserByUsername(authenticationToken.getPrincipal().toString());
+		SysUser sysUser = userAuthenService.findSysUserByUsername(authenticationToken.getPrincipal().toString());
 		
 		if(sysUser==null) {
 			System.out.println("用户名不存在");

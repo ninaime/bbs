@@ -2,7 +2,7 @@ package com.mime.bbs.model;
 
 import java.sql.Timestamp;
 
-public class Plate {
+public class BbsPlate {
 	private Integer id;
 	private String plateName;
 	private Integer parentId;

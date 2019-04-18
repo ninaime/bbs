@@ -2,7 +2,7 @@ package com.mime.bbs.model;
 
 import java.sql.Date;
 
-public class Article {
+public class BbsArticle {
 	private Integer id;
 	private String catalogId;
 	private String title;

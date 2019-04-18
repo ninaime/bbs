@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.mime.bbs.mapper.SysUserMapper;
 import com.mime.bbs.model.SysUser;
-import com.mime.bbs.service.SysUserAuthenService;
+import com.mime.bbs.service.UserAuthenService;
 
-@Service("sysUserAuthenService")
-public class SysUserAuthenServiceImpl implements SysUserAuthenService{
+@Service("userAuthenService")
+public class UserAuthenServiceImpl implements UserAuthenService{
 	
 	@Autowired
 	SysUserMapper sysUserMapper;

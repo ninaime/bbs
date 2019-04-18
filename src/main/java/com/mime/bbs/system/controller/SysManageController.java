@@ -15,15 +15,12 @@ public class SysManageController {
 	 */
 	@RequestMapping("/")
 	public ModelAndView index() {
-		System.out.println("ManagerController.index()  进入后台管理");
 		return new ModelAndView("system/index");
 	}
 	
+	//跳转到后台首页
 	@RequestMapping(value="welcome",method=RequestMethod.GET)
 	public ModelAndView welcome() {
-		System.out.println("ManagerController.welcome()  进入后台管理系统");
 		return new ModelAndView("welcome");
 	}
-	
-	
 }

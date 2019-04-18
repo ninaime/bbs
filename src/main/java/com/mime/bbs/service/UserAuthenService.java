@@ -2,7 +2,7 @@ package com.mime.bbs.service;
 
 import com.mime.bbs.model.SysUser;
 
-public interface SysUserAuthenService {
+public interface UserAuthenService {
 	boolean userRegister(SysUser sysUser);
 		
 	boolean isExistUsername(String username);

@@ -2,8 +2,8 @@ package com.mime.bbs.system.service;
 
 import java.util.List;
 
-import com.mime.bbs.model.Plate;
+import com.mime.bbs.model.BbsPlate;
 
 public interface SysPlateService {
-	List<Plate> findPlate();
+	List<BbsPlate> findPlate();
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mime.bbs.mapper.PlateMapper">
+<mapper namespace="com.mime.bbs.mapper.BbsPlateMapper">
 		<!-- 
 			column：对应数据库列名
 			jdbcType：类型
 			property：对应实体类中属性
 		 -->
 
-	<resultMap id="BaseResultMap" type="com.mime.bbs.model.Plate">
+	<resultMap id="BaseResultMap" type="com.mime.bbs.model.BbsPlate">
 		<id column="ID" jdbcType="INTEGER" property="id" />
 		<result column="PLATE_NAME" jdbcType="VARCHAR" property="plateName" />
 		<result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />

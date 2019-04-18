@@ -1,20 +1,65 @@
-
-.right-page-header{
+.index-header{
 	text-align: center;
 	line-height: 60px;
 }
 
-.right-page-header>ul{
+.index-header>ul{
 	list-style: none;
 	float:right;
 	overflow:hidden;
 }
-.right-page-header>ul li{
+
+.index-header>ul>li{
 	float:left;
 	margin: 0px 12px;
 }
 
-/*×¢²áÈÝÆ÷*/
+.index-article>a{
+	font-size: 18px;
+	font-weight: bold;
+	color: black;
+	cursor:pointer;
+}
+.index-article a:hover{ 
+	color:black;
+}
+
+.index-article p{
+	color:#999;
+	font-size: 14px;
+}
+
+.index-article ul{
+	list-style: none;
+	float:left;
+	overflow:hidden;
+}
+
+.index-article ul>li{
+	float:left;
+	margin: 0px 12px;
+}
+.index-article span{
+	font-size: 10px;
+	color:#666;
+}
+
+.index-article ul>li>a{
+	font-size: 12px;
+	color:#666;
+	cursor:pointer;
+}
+
+
+
+.sign-header{
+	text-align: center;
+	line-height: 60px;
+}
+
+
+
+/*×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .container-authenticate {
 	width: 360px;
 	background-color: white;
@@ -41,7 +86,7 @@
 
 
 
-/*Í·²¿±êÌâ*/
+/*Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .header-title {
 	text-align: right;
 }
@@ -61,7 +106,7 @@
 
 
 
-/*µÇÂ¼ÎÄ±¾¿ò*/
+/*ï¿½ï¿½Â¼ï¿½Ä±ï¿½ï¿½ï¿½*/
 .text-login {
 	width: 98%;
 	height: 45px;
@@ -81,7 +126,7 @@
 	background-color: rgba(255, 255, 255, 0.3);
 }
 
-/*µÇÂ¼°´Å¥*/
+/*ï¿½ï¿½Â¼ï¿½ï¿½Å¥*/
 .btn-login {
 	text-align: center;
 	font-size: 15px;

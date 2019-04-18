@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 公用组件 -->
+<title>Include</title>
+
+</head>
+<body>
+
+	<!-- 头部信息 th:fragment：标签引入名，对应引用的<div th:replace="include::header"></div>-->
+	<div th:fragment="index-header" class="index-header">
+		<!-- 如果用户不等于空 -->
+		<ul th:if="${user!=null}">
+			<li><font>欢迎你，</font> <!-- 如果昵称不为空则显示昵称，否则显示用户名 --> <a
+				href="" th:if="${user.nickname!=null}" th:text=" ${user.nickname }"></a>
+				<a href="" th:else th:text=" ${user.username }"></a>
+			</li>
+			<li><a href="#">账户管理</a></li>
+			<!-- 用户跳转前面需加/ -->
+			<li><a href="/SysUser/userExit">注销</a></li>
+		</ul>
+		<ul th:else>
+			<li><a href="/sign-in">去登陆</a></li>
+			<li><a href="/sign-up">去注册</a></li>
+		</ul>
+	</div>
+	
+	<div th:fragment="authenticate-header(parameter)" class="right-page-header">
+		<ul th:else>
+			<li th:if="${parameter=='sign-up'}"><a href="/sign-in">已有账户去登陆</a></li>
+			<li th:if="${parameter=='sign-in'}"><a href="/sign-up">去注册</a></li>
+			<li><a>意见反馈</a></li>
+		</ul>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

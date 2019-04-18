@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- 标题显示在浏览器上的标题 -->
+<title>论坛首页</title>
+
+<!-- my.css：自定义css样式都放这里 -->
+<link href="/css/my.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- 必须先引用jQuery.js再去引用其他js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/bootstrap.min.js"></script>
+<script src="/js/vue.min.js"></script>
+<script src="/js/axios.min.js"></script>
+
+</head>
+<body>
+	<div>
+	<!-- 
+		1.th:replace :不要自己的主标签引用
+		2.第一个参数include为文件名
+		3.第二个参数为th:fragment="header"名
+	-->
+		<!-- bootstrap布局框架 -->
+		<div class="container">
+			<div class="row">
+				<!-- 调用头部框架 -->
+				<div th:replace="include::index-header" class="col-xs-12"></div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9" id="articles">
+					<div v-for ="article in articles" >
+						<div class="index-article">
+							<a>{{article.title}}</a>
+							<p>{{article.context}}</p>
+							<ul>
+								<li>{{article.catalogId}}</li>
+								<li><a><span class="glyphicon glyphicon-user"></span>  张三{{article.authorId}}</a></li>
+								<li><a><span class="glyphicon glyphicon-fire"></span>  {{article.viewCount}}</a></li>
+								
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+     var vue = new Vue ({
+        el:"#articles",
+        data:{
+        	articles: [],
+        },
+        mounted:function(){ //mounted　表示这个 Vue 对象加载成功了
+        	console.log("aaa");
+            this.list();
+        }, 
+        methods:{
+          list(){
+			axios.get("http://localhost:8080/initbbs").then(res => {
+				vue.articles = res.data;
+                console.log(vue.articles);
+            }).catch(err => {
+              console.error(err); 
+            })
+          }
+        }
+      })
+</script>
+
+
+
+</html>
