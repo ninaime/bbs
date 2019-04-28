@@ -1,0 +1,54 @@
+<?xml version="1.0"  encoding="UTF-8"  ?>
+<configuration>
+	<!-- 配置控制台日志输出 -->
+	<appender name="consoleLog" clss="ch.qos.logback.core.ConsoleAppender">
+		<!-- 设置输出格式 -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+				%d - %msg%n
+			</pattern>
+		</layout>
+	</appender>
+	<!-- 创建信息文件 -->
+	<appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>DENY</onMatch>
+			<onMismatch>ACCEPT</onMismatch>
+		</filter>
+		<encoder>
+			<pattern>
+				%msg%n
+			</pattern>
+		</encoder>
+		<!-- 滚动策略 -->
+		<rollingPolicy>
+			<!-- 路径 -->
+			<fileNamePattern>target/log/info.%d.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<!-- 创建error文件 -->
+	<appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<encoder>
+			<pattern>
+				%msg%n
+			</pattern>
+		</encoder>
+		<!-- 滚动策略 -->
+		<rollingPolicy>
+			<!-- 路径 -->
+			<fileNamePattern>target/log/error.%d.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	
+	<root level="info">
+		<appender ref="consoleLog"/>
+		<appender ref="fileInfoLog"/>
+	</root>
+
+</configuration>
+
+

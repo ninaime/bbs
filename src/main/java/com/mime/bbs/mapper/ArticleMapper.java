@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.mime.bbs.model.BbsArticle;
+import com.mime.bbs.dto.ArticleDto;
 
 @Mapper
-public interface BbsArticleMapper {
+public interface ArticleMapper {
 	//查询所有文章
-	List<BbsArticle>findArticle();
+	List<ArticleDto>findArticle();
 }

@@ -7,19 +7,19 @@
 <title>论坛首页</title>
 
 <!-- my.css：自定义css样式都放这里 -->
-<link href="/css/my.css" rel="stylesheet">
-<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bbs/css/my.css" rel="stylesheet">
+<link href="/bbs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- 必须先引用jQuery.js再去引用其他js -->
-<script src="/js/jquery.min.js"></script>
-<script src="/bootstrap/bootstrap.min.js"></script>
-<script src="/js/vue.min.js"></script>
-<script src="/js/axios.min.js"></script>
+<script src="/bbs/js/jquery.min.js"></script>
+<script src="/bbs/bootstrap/bootstrap.min.js"></script>
+<script src="/bbs/js/vue.min.js"></script>
+<script src="/bbs/js/axios.min.js"></script>
 
 </head>
 <body>
 	<div>
-	<!-- 
+		<!-- 
 		1.th:replace :不要自己的主标签引用
 		2.第一个参数include为文件名
 		3.第二个参数为th:fragment="header"名
@@ -34,18 +34,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-9" id="articles">
-					<div v-for ="article in articles" >
+					<div v-for="article in articles">
 						<div class="index-article">
 							<a>{{article.title}}</a>
 							<p>{{article.context}}</p>
 							<ul>
-								<li>{{article.catalogId}}</li>
-								<li><a><span class="glyphicon glyphicon-user"></span>  张三{{article.authorId}}</a></li>
-								<li><a><span class="glyphicon glyphicon-fire"></span>  {{article.viewCount}}</a></li>
-								
+								<li><span class="glyphicon glyphicon-fire" ></span>  {{article.viewCount}}</li>
+								<li class="red"><a><span class="glyphicon glyphicon-user"></span>  {{article.nickname}}</a></li>
+								<li><a><span class="glyphicon glyphicon-comment"></span>  {{article.comments}}</a></li>
+								<li><a><span class="glyphicon glyphicon-heart"></span>  {{article.likeCount}}</a></li>
+								<!--  v-bind:class="red:article.collect" -->
+								<li><a @click="collect(article.id)"><span class="glyphicon glyphicon-star"   v-bind:class="{red:article.collect}"></span></a></li>
 							</ul>
 						</div>
-						
 					</div>
 				</div>
 			</div>
@@ -57,6 +58,7 @@
         el:"#articles",
         data:{
         	articles: [],
+        	isRed:false
         },
         mounted:function(){ //mounted　表示这个 Vue 对象加载成功了
         	console.log("aaa");
@@ -64,15 +66,17 @@
         }, 
         methods:{
           list(){
-			axios.get("http://localhost:8080/initbbs").then(res => {
-				vue.articles = res.data;
+			axios.get("/bbs/initbbs").then(res => {
+				vue.articles = res.data.data;
                 console.log(vue.articles);
             }).catch(err => {
               console.error(err); 
             })
+          },collect:function(id){
+        	 console.log(id);
           }
-        }
-      })
+		}
+	})
 </script>
 
 

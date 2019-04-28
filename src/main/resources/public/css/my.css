@@ -1,3 +1,11 @@
+*{
+	padding:0px;
+}
+
+.red{
+	color:red !important;
+}
+
 .index-header{
 	text-align: center;
 	line-height: 60px;
@@ -14,12 +22,21 @@
 	margin: 0px 12px;
 }
 
+.index-article{
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
 .index-article>a{
 	font-size: 18px;
 	font-weight: bold;
 	color: black;
 	cursor:pointer;
 }
+
 .index-article a:hover{ 
 	color:black;
 }
@@ -41,7 +58,6 @@
 }
 .index-article span{
 	font-size: 10px;
-	color:#666;
 }
 
 .index-article ul>li>a{
@@ -49,6 +65,14 @@
 	color:#666;
 	cursor:pointer;
 }
+
+.index-article ul>li>a:hover{
+	text-decoration:none;
+}
+
+
+
+
 
 
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mime.bbs.mapper.ArticleMapper">
+	<!-- column：对应数据库列名  jdbcType：类型  property：对应实体类中属性-->
+	<resultMap id="BaseResultMap" type="com.mime.bbs.dto.ArticleDto">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="PLATE_ID" jdbcType="INTEGER" property="plateId" />
+		<result column="TITLE" jdbcType="VARCHAR" property="title" />
+		<result column="SUMMARY" jdbcType="VARCHAR" property="summary" />
+		<result column="AUTHOR_ID" jdbcType="INTEGER" property="authorId" />
+		<result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
+		<result column="context" jdbcType="VARCHAR" property="context" />
+		<result column="VIEW_COUNT" jdbcType="INTEGER" property="viewCount" />
+		<result column="comments" jdbcType="INTEGER" property="comments" />
+		<result column="likeCount" jdbcType="INTEGER" property="likeCount" />
+		<result column="weight" jdbcType="INTEGER" property="weight" />
+		<result column="collect" jdbcType="INTEGER" property="collect" />
+		
+	</resultMap>
+	
+	<select id="findArticle" resultMap="BaseResultMap">
+		select a.id,a.plate_id,a.title,a.summary,a.author_id,a.context,a.weight,a.view_count,u.nickname nickname,
+		(select count(id) from bbs_like where is_disable=0 and a.id=article_id group by article_id) likeCount,
+		(select count(id) from bbs_review where is_disable=0 and a.id=article_id group by article_id) comments,
+		(select type from bbs_annal where is_disable=0 and type=1 and a.id=article_id and 1 = user_id group by article_id) collect
+		from bbs_article a left join sys_user u on u.id=a.author_id where a.is_disable = 0 
+		order by weight,view_count,a.gmt_create,a.gmt_modified
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>

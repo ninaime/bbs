@@ -2,21 +2,22 @@ package com.mime.bbs.model;
 
 import java.sql.Date;
 
-public class BbsArticle {
+public class Article {
 	private Integer id;
 	private String catalogId;
 	private String title;
-	private String englishTitle;
 	private String summary;
 	private String tags;
 	private String authorId;
 	private String context;
 	private Integer viewCount;
-	private Integer commentCount;
+	private Integer likeCount;
 	private Integer weight;
+	private Integer type;
 	private Integer isDisable;
 	private Date gmtCreate; 
 	private Date gmtModified;
+	private SysUser sysUser;
 	
 	public Integer getId() {
 		return id;
@@ -36,12 +37,7 @@ public class BbsArticle {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getEnglishTitle() {
-		return englishTitle;
-	}
-	public void setEnglishTitle(String englishTitle) {
-		this.englishTitle = englishTitle;
-	}
+
 	public String getSummary() {
 		return summary;
 	}
@@ -50,6 +46,12 @@ public class BbsArticle {
 	}
 	public String getTags() {
 		return tags;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
 	}
 	public void setTags(String tags) {
 		this.tags = tags;
@@ -72,12 +74,7 @@ public class BbsArticle {
 	public void setViewCount(Integer viewCount) {
 		this.viewCount = viewCount;
 	}
-	public Integer getCommentCount() {
-		return commentCount;
-	}
-	public void setCommentCount(Integer commentCount) {
-		this.commentCount = commentCount;
-	}
+
 	public Integer getWeight() {
 		return weight;
 	}
@@ -102,15 +99,20 @@ public class BbsArticle {
 	public void setGmtModified(Date gmtModified) {
 		this.gmtModified = gmtModified;
 	}
-	
-	@Override
-	public String toString() {
-		return "SysArticle [id=" + id + ", catalogId=" + catalogId + ", title=" + title + ", englishTitle="
-				+ englishTitle + ", summary=" + summary + ", tags=" + tags + ", authorId=" + authorId + ", context="
-				+ context + ", viewCount=" + viewCount + ", commentCount=" + commentCount + ", weight=" + weight
-				+ ", isDisable=" + isDisable + ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified + "]";
+
+	public Integer getLikeCount() {
+		return likeCount;
 	}
-	
-	
+	public void setLikeCount(Integer likeCount) {
+		this.likeCount = likeCount;
+	}
+	public SysUser getSysUser() {
+		return sysUser;
+	}
+	public void setSysUser(SysUser sysUser) {
+		this.sysUser = sysUser;
+	}
+
+
 	
 }

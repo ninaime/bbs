@@ -2,8 +2,8 @@ package com.mime.bbs.service;
 
 import java.util.List;
 
-import com.mime.bbs.model.BbsArticle;
+import com.mime.bbs.dto.ArticleDto;
 
 public interface BulletinBoardService {
-	List<BbsArticle>findArticle();
+	List<ArticleDto>findArticle();
 }
