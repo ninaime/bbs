@@ -28,7 +28,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- 调用头部框架 -->
-				<div th:replace="include::index-header" class="col-xs-12"></div>
+				<div th:replace="include::index-header" class="col-xs-12 "></div>
 			</div>
 		</div>
 		<div class="container">
@@ -57,11 +57,10 @@
      var vue = new Vue ({
         el:"#articles",
         data:{
-        	articles: [],
-        	isRed:false
-        },
+        	articles: []
+       	},
         mounted:function(){ //mounted　表示这个 Vue 对象加载成功了
-        	console.log("aaa");
+        	console.log("加载成功");
             this.list();
         }, 
         methods:{
